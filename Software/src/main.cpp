@@ -106,7 +106,6 @@ void loop()
   {
     Serial.println("Radio Receiving ...");
     radio.read(&data, sizeof(data));
-    Serial.println(data);
     newData = true;
     delay(10);
   }
@@ -119,7 +118,7 @@ void loop()
     if (newData)
     {
       txValue = data;
-      pCharacteristic->setValue(txString);
+      pCharacteristic->setValue(txValue);
       pCharacteristic->notify(); // Send the value to the app!
       newData = false;
     }
